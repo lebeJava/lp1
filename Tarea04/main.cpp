@@ -7,35 +7,51 @@ CASO 3:
     Está ubicado en el medio y tiene 8 posibles posiciones.
 */
 #include <iostream>
+#include <vector>
 using namespace std;
+
+vector<int> xArray;
+vector<int> yArray;
 
 int main()
 {
-    int resultado = 0;
     int Calcular(int x, int y);
     int Alrededores(int a, int b, int desde, int hasta, int* suma);
 
     int x, y, j;
-    cout << "Ingresa la posicion x (1-8): ";
-    cin >> x;
-    if(!x || x < 1 || x > 8) {
-        cout << "ERROR";
-        return 0;
+    int T;
+    cin>>T;
+    while(T--)
+    {
+        int resultado = 0;
+        xArray.clear();
+        yArray.clear();
+
+        //cout << "Ingresa la posicion x (1-8): ";
+        cin >> x;
+        /*if(!x || x < 1 || x > 8) {
+            cout << "ERROR";
+            return 0;
+        }*/
+        //cout << "Ingresa la posicion y (1-8): ";
+        cin >> y;
+        /*if(!y || y < 1 || y > 8) {
+            cout << "ERROR";
+            return 0;
+        }*/
+        //cout << "Ingresa el numero de jugadas: ";
+        cin >> j;
+        /*if(!j || j < 0) {
+            cout << "ERROR";
+            return 0;
+        }*/
+        Alrededores(x, y, 1, j, &resultado);
+        if(j == 1) {
+            resultado++;
+        }
+        cout<< resultado<<endl;
     }
-    cout << "Ingresa la posicion y (1-8): ";
-    cin >> y;
-    if(!y || y < 1 || y > 8) {
-        cout << "ERROR";
-        return 0;
-    }
-    cout << "Ingresa el numero de jugadas: ";
-    cin >> j;
-    if(!j || j < 0) {
-        cout << "ERROR";
-        return 0;
-    }
-    Alrededores(x, y, 1, j, &resultado);
-    cout << "Resultado: " << resultado;
+
     return 0;
 }
 
@@ -82,7 +98,18 @@ int Alrededores(int a, int b, int desde, int hasta, int* suma) {
                     for(int y = yStart; y <= yEnd; y++) {
                         if(!(x == a && y == b)) {
                             //cout << "CASO 1: " << x << "," << y << endl;
-                            *suma = *suma + 1;
+                            bool found = false;
+                            for(int i = 0; i < xArray.size(); i++) {
+                                if(int(xArray[i]) == x && int(yArray[i]) == y) {
+                                    found = true;
+                                    break;
+                                }
+                            }
+                            if(!found) {
+                                xArray.push_back(x);
+                                yArray.push_back(y);
+                                *suma = *suma + 1;
+                            }
                             if(desde != hasta) {
                                 Alrededores(x, y, 1, hasta-1, suma);
                             }
@@ -124,7 +151,19 @@ int Alrededores(int a, int b, int desde, int hasta, int* suma) {
                     for(int y = yStart; y <= yEnd; y++) {
                         if(!(x == a && y == b)) {
                             //cout << "CASO 2: " << x << "," << y << endl;
-                            *suma = *suma + 1;
+                            bool found = false;
+                            for(int i = 0; i < xArray.size(); i++) {
+                                if(int(xArray[i]) == x && int(yArray[i]) == y) {
+                                    found = true;
+                                    break;
+                                }
+                            }
+                            if(!found) {
+                                xArray.push_back(x);
+                                yArray.push_back(y);
+                                *suma = *suma + 1;
+                            }
+
                             if(desde != hasta) {
                                 Alrededores(x, y, 1, hasta-1, suma);
                             }
@@ -138,7 +177,19 @@ int Alrededores(int a, int b, int desde, int hasta, int* suma) {
                 for(int y = (b-1); y <= (b+1); y++) {
                     if(!(x == a && y == b)) {
                         //cout << "CASO 3: " << x << "," << y << endl;
-                        *suma = *suma + 1;
+                        bool found = false;
+                        for(int i = 0; i < xArray.size(); i++) {
+                            if(int(xArray[i]) == x && int(yArray[i]) == y) {
+                                found = true;
+                                break;
+                            }
+                        }
+                        if(!found) {
+                            xArray.push_back(x);
+                            yArray.push_back(y);
+                            *suma = *suma + 1;
+                        }
+
                         if(desde != hasta) {
                             Alrededores(x, y, 1, hasta-1, suma);
                         }
