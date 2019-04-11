@@ -4,8 +4,10 @@ using namespace std;
 int Saltos(int maximo) {
     int saltos = 1;
     int distancia = 1;
-    while(distancia < maximo) {
+    int sumatoria = 1;
+    while(sumatoria < maximo) {
         distancia += 9;
+        sumatoria += distancia;
         saltos++;
     }
     return saltos;
