@@ -6,9 +6,17 @@ vector<int> lista;
 
 int Sospechosos() {
     int suma = 0;
+    bool found = false;
     for(int i = 0; i < lista.size()-1; i++) {
         if(int(lista[i]) != int(lista[i+1])) {
-            suma += 2;
+            if(found) {
+                suma += 1;
+            }else{
+                found = true;
+                suma += 2;
+            }
+        }else{
+            found = false;
         }
     }
     return suma;
