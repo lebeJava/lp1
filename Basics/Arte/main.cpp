@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+#define DEBUG 1
 
 vector<int> lista;
 
@@ -24,6 +25,29 @@ bool EsPosible() {
 
 int main()
 {
+    #if DEBUG
+    int T;
+    cin>>T;
+    while(T--)
+    {
+        int t;
+        cin>>t;
+        while(t--)
+        {
+            int x;
+            cin >> x;
+            lista.push_back(x);
+            if(t == 0) {
+                if(EsPosible()) {
+                    cout << "Si" << endl;
+                }else{
+                    cout << "No" << endl;
+                }
+            }
+        }
+        lista.clear();
+    }
+    #else
     cout << "Ingresa la longitud: ";
     int L;
     cin >> L;
@@ -41,5 +65,6 @@ int main()
             }
         }
     }
+    #endif
     return 0;
 }

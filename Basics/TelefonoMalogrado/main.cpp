@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+#define DEBUG 1
 
 vector<int> lista;
 
@@ -24,6 +25,25 @@ int Sospechosos() {
 
 int main()
 {
+    #if DEBUG
+    int T;
+    cin>>T;
+    while(T--)
+    {
+        int t;
+        cin>>t;
+        while(t--)
+        {
+            int x;
+            cin >> x;
+            lista.push_back(x);
+            if(t == 0) {
+                cout << Sospechosos() << endl;
+            }
+        }
+        lista.clear();
+    }
+    #else
     cout << "Ingresa la cantidad de numeros: ";
     int T;
     cin >> T;
@@ -37,5 +57,6 @@ int main()
             cout << Sospechosos();
         }
     }
+    #endif
     return 0;
 }
