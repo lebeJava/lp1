@@ -50,19 +50,33 @@ int main() {
       cin >> numeros[t];
       t++;
     }
+
+    bool found = false;
     for(int i = 0; i < 4; i++) {
-      if(clave[i] == numeros[i]) {
-        toros++;
-      }
       for(int j = 0; j < 4; j++) {
-        if(i != j && clave[j] == numeros[i]) {
-          vacas++;
+        if(i != j && numeros[i] == numeros[j]) {
+          found = true;
+          break;
         }
       }
-      cout << clave[i] << " --> " << numeros[i] << endl;
     }
-    cout << "Toros: " << toros << endl;
-    cout << "Vacas: " << vacas << endl;
+    if(found) {
+      cout << "El valor ingresado no es correcto" << endl;
+    }else{
+      for(int i = 0; i < 4; i++) {
+        if(clave[i] == numeros[i]) {
+          toros++;
+        }
+        for(int j = 0; j < 4; j++) {
+          if(i != j && clave[j] == numeros[i]) {
+            vacas++;
+          }
+        }
+        cout << clave[i] << " --> " << numeros[i] << endl;
+      }
+      cout << "Toros: " << toros << endl;
+      cout << "Vacas: " << vacas << endl;
+    }
   }
   cout << "Fin del juego" << endl;
   return 0;
