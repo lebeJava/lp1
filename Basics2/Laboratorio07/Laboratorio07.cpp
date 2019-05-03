@@ -1,3 +1,5 @@
+#include <iostream>
+using namespace std;
 class Bad_area {};
 int area(int length, int width) {
   if(length <= 0 || width <= 0) throw Bad_area{};

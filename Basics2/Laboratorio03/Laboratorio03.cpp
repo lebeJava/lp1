@@ -1,3 +1,5 @@
+#include <iostream>
+using namespace std;
 int area (int length, int width);
 
 int main () {
