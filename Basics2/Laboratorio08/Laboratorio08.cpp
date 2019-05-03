@@ -12,8 +12,10 @@ int main() {
   }catch(out_of_range) {
     cerr << "¡Oops! Eror de rango" << endl;
     return 1;
-  }catch() {
+  }//Error: Catch sin valor
+  /*catch() {
     cerr << "Error: algo salio mal" << endl;
     return 2;
-  }
+  }*/
+  return 0;
 }

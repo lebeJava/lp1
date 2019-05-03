@@ -11,8 +11,13 @@ int main() {
   while(cin >> temp) {
     ++no_of_temps;
     sum += temp;
-    if(temp > high_temp) high_temp = temp;
-    if(temp < low_temp) low_temp = temp;
+    if(no_of_temps == 1) {
+      high_temp = temp;
+      low_temp = temp;
+    }else{
+      if(temp > high_temp) high_temp = temp;
+      if(temp < low_temp) low_temp = temp;
+    }
   }
   cout << "Temperatura alta: " << high_temp << endl;
   cout << "Temperatura baja: " << low_temp << endl;

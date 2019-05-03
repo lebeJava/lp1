@@ -12,7 +12,7 @@ int main() {
     int y = 2;
     int z = 4;
     int area1 = area(x, y);
-    int area2 = framed_area(1, z);
+    //int area2 = framed_area(1, z); //Error: No definido
   }catch(exception & e) {
     cerr << "¡Oops! Argumentos invalidos para area()" << endl;
     return 1;
